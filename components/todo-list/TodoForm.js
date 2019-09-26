@@ -10,10 +10,10 @@ Vue.component("form-new-todo", {
             <input 
                 type="text" 
                 class="form-control" 
-                id="todoText" 
+                id="todoTextInput" 
                 placeholder="Nueva tarea" 
                 v-model="todoText"
-                v-on:keyup.enter="$emit('addTodo', this.todoText)"
+                v-on:keyup.enter="$emit('addTodo', todoText)"
             />
         </div>
     </form>
@@ -22,6 +22,6 @@ Vue.component("form-new-todo", {
         return {
             todoText: ''
         }
-    }
+    },
 
 })

@@ -18,7 +18,7 @@ Vue.component("todo-list", {
             <preloader  v-if="todos.length === 0 " />
         </div>
         <div>
-            <form-new-todo v-on:addTodo="addTodo(text)"/>
+            <form-new-todo v-on:addTodo="addTodo"/>
         </div>
     </div>
     `,
