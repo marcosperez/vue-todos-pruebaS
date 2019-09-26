@@ -26,25 +26,5 @@
   <script src="components/todo-list/ContadorTodos.js"></script>
   <script src="components/todo-list/TodoForm.js"></script>
   <script src="components/general/preloader.js"></script>
-  <script>
-    var vm = new Vue({
-      el: "#app",
-      data: {
-        todos:[],
-        todosLoaded: false,
-      },
-      mounted() {
-        if(!this.todosLoaded){
-          this.todosLoaded = true;
-          axios.get("./mock_data/todos.json" )
-          .then((response) =>  {
-            setTimeout(() => {
-              vm.todos = this.todos.concat(response.data.todos)
-            }, 500)
-          })
-          .catch((err) => this.todosLoaded = false)
-        }
-      },
-    });
-  </script>
+  <script src="components/TodoApp.js"></script>
 </html>
