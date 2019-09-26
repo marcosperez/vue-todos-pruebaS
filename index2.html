@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+      <p v-if="seen">Now you see me</p>
+      <button v-on:click="toggleSeen">Toggle</button>
+      <li v-for="todo in todos">
+          {{todo.text}}
+      </li>
+      <input v-model="message" title="mensaje"> 
+      <input type="checkbox" v-model="seen" title="seen">
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        message: "Hello Vue!sadasd",
+        seen: true,
+        todos: [
+          { text: "Learn JavaScript" },
+          { text: "Learn Vue" },
+          { text: "Build something awesome" }
+        ]
+      },
+      methods: {
+        toggleSeen: function() {
+          this.seen = !this.seen;
+        }
+      }
+    });
+  </script>
+</html>

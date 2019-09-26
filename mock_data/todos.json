@@ -1,0 +1,7 @@
+{
+  "todos": [
+    { "id": 1, "text": "Learn vuejs", "completado": true, "estimado": 10 },
+    { "id": 2, "text": "Learn vuejs 2", "estimado": 12 },
+    { "id": 3, "text": "Learn vuejs 3", "estimado": 5 }
+  ]
+}

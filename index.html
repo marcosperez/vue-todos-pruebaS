@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">    <style> 
+      body{
+        font-family: 'Roboto Mono', monospace;
+      };
+    </style>
+    <title>Vue</title>
+  </head>
+  <body>
+    <div id="app"  class="container ">
+     <contador-todos  v-bind:todos="todos"></contador-todos>
+      <todo-list v-bind:todos="todos"></todo-list>
+    </div>
+  </body>
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="components/todo-list/TodoItem.js"></script>
+  <script src="components/todo-list/TodoList.js"></script>
+  <script src="components/todo-list/ContadorTodos.js"></script>
+  <script src="components/todo-list/TodoForm.js"></script>
+  <script src="components/general/preloader.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        todos:[],
+        todosLoaded: false,
+      },
+      mounted() {
+        if(!this.todosLoaded){
+          this.todosLoaded = true;
+          axios.get("./mock_data/todos.json" )
+          .then((response) =>  {
+            setTimeout(() => {
+              vm.todos = this.todos.concat(response.data.todos)
+            }, 500)
+          })
+          .catch((err) => this.todosLoaded = false)
+        }
+      },
+    });
+  </script>
+</html>
