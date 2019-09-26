@@ -22,7 +22,15 @@ Vue.component("todo-list", {
         </div>
     </div>
     `,
-    props: ["todos"],
+    props: {
+        todos: {
+            validator: function (value) {
+                console.log(value)
+                return Array.isArray(value)
+            }
+        }
+    },
+
     methods: {
         addTodo(text) {
             this.todos.push({ text: text, estimado: (this.todos.length * 3), id: (this.todos.length + 1) })
