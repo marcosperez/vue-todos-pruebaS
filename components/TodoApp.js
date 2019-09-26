@@ -7,6 +7,7 @@ var vm = new Vue({
     mounted() {
         if (!this.todosLoaded) {
             this.todosLoaded = true;
+            console.log(this.todosLoaded)
             axios.get("./mock_data/todos.json")
                 .then((response) => {
                     setTimeout(() => {

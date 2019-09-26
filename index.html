@@ -14,8 +14,12 @@
   </head>
   <body>
     <div id="app"  class="container ">
-     <contador-todos  v-bind:todos="todos"></contador-todos>
-      <todo-list v-bind:todos="todos"></todo-list>
+      <contador-todos  
+        v-bind:todos="todos" >
+      </contador-todos>
+      <todo-list v-bind:todos="todos"
+                v-bind:todos-loaded="todosLoaded"
+      ></todo-list>
     </div>
   </body>
   <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>

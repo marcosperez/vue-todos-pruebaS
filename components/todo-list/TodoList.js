@@ -8,14 +8,14 @@ Vue.component("todo-list", {
             </p>
         </div>
         <div>
+            <preloader  v-if="todos.length === 0 && !todosLoaded" />
             <todo-item  
-                v-if="todos.length > 0 " 
+                v-else
                 v-for="(todo, index) in todos" 
                 v-bind:todo="todo" 
                 v-bind:key="todo.id"
                 v-on:remove="removeTodo(index)"
             />
-            <preloader  v-if="todos.length === 0 " />
         </div>
         <div>
             <form-new-todo v-on:addTodo="addTodo"/>
@@ -24,16 +24,20 @@ Vue.component("todo-list", {
     `,
     props: {
         todos: {
+            type: Array,
             validator: function (value) {
-                console.log(value)
+
                 return Array.isArray(value)
             }
+        },
+        "todosLoaded": {
+            type: Boolean
         }
     },
 
     methods: {
-        addTodo(text) {
-            this.todos.push({ text: text, estimado: (this.todos.length * 3), id: (this.todos.length + 1) })
+        addTodo(newTodo) {
+            this.todos.push({ text: newTodo.text, estimado: newTodo.estimado, id: (this.todos.length + 1) })
         },
         removeTodo(index) {
             this.todos.splice(index, 1)
